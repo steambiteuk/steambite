@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SteamBite</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="logo">
+        <img src="icons/icon128.png" alt="GameBites" class="logo-icon">
+        <span class="logo-text">SteamBite</span>
+      </div>
+    </header>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+      <h2 class="section-title">
+        <span>⚙️</span>
+        <span>Settings</span>
+      </h2>
+
+      <!-- Currency Selection -->
+      <div class="form-group">
+        <label for="currency-select">Currency</label>
+        <select id="currency-select">
+          <option value="USD">🇺🇸 USD - US Dollar</option>
+          <option value="EUR">🇪🇺 EUR - Euro</option>
+          <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+          <option value="GBP">🇬🇧 GBP - British Pound</option>
+          <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+          <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+          <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+          <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+          <option value="PLN">🇵🇱 PLN - Polish Zloty</option>
+          <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+        </select>
+      </div>
+
+      <!-- Product Selection -->
+      <div class="form-group">
+        <label for="product-select">Comparison Product</label>
+        <select id="product-select">
+          <!-- Dynamically populated -->
+        </select>
+      </div>
+
+      <!-- Product Preview -->
+      <div id="product-preview" class="product-preview" style="display: none;">
+        <img id="preview-icon" src="" alt="" class="product-preview-icon">
+        <div class="product-preview-info">
+          <div id="preview-name" class="product-preview-name"></div>
+          <div id="preview-price" class="product-preview-price"></div>
+        </div>
+      </div>
+
+      <!-- Badge Visibility -->
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="badge-visible" checked>
+          Show Badges on Steam
+        </label>
+      </div>
+    </section>
+
+    <!-- Lucky Button -->
+    <section class="lucky-section">
+      <button id="lucky-btn" class="lucky-button">
+        <span class="lucky-icon">🎲</span>
+        <span class="lucky-text">I'm Feeling Lucky!</span>
+      </button>
+      <p class="lucky-hint">Discover a random Steam game</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <a href="https://SteamBite.uk/privacy_policy.html" target="_blank" class="footer-link">Privacy Policy</a>
+      <span class="separator">•</span>
+      <a href="https://github.com" target="_blank" class="footer-link">GitHub</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

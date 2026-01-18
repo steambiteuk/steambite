@@ -1,0 +1,225 @@
+/* Steam GameBites - Content Script Styles */
+/* Minimal design compatible with Steam UI */
+
+/* Badge Container - Displayed next to the price */
+.gamebites-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(103, 193, 245, 0.2);
+  border-radius: 3px;
+  padding: 3px 8px;
+  cursor: help;
+  transition: all 0.2s ease;
+  font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.gamebites-badge:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(103, 193, 245, 0.4);
+}
+
+.gamebites-badge-icon {
+  font-size: 14px;
+}
+
+.gamebites-badge-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.gamebites-badge-quantity {
+  color: #67c1f5;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.gamebites-badge-product {
+  color: #acdbf5;
+  font-size: 11px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gamebites-badge-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 3px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.gamebites-badge-close:hover {
+  color: #ffffff;
+}
+
+/* Hide price element in badge (already shown elsewhere) */
+.gamebites-badge-price,
+.gamebites-badge-equals {
+  display: none;
+}
+
+/* Tooltip / Calculation Detail Popup */
+.gamebites-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background: #171a21;
+  border: 1px solid #3d4450;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  font-size: 11px;
+  color: #c6d4df;
+  z-index: 10000;
+  animation: gamebites-fadeIn 0.15s ease-out;
+  pointer-events: none;
+}
+
+.gamebites-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  background: #171a21;
+  border-right: 1px solid #3d4450;
+  border-bottom: 1px solid #3d4450;
+  transform: rotate(45deg);
+}
+
+.gamebites-tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #3d4450;
+}
+
+.gamebites-tooltip-header-icon {
+  font-size: 11px;
+}
+
+.gamebites-tooltip-header-text {
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+}
+
+.gamebites-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-family: monospace;
+  font-size: 10px;
+}
+
+.gamebites-tooltip-label {
+  color: #8f98a0;
+}
+
+.gamebites-tooltip-value {
+  color: #c6d4df;
+}
+
+.gamebites-tooltip-value.highlight {
+  color: #a4d007;
+}
+
+.gamebites-tooltip-divider {
+  height: 1px;
+  background: #3d4450;
+  margin: 6px 0;
+}
+
+.gamebites-tooltip-result {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.gamebites-tooltip-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #3d4450;
+}
+
+.gamebites-tooltip-source a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #67c1f5;
+  text-decoration: none;
+  font-size: 9px;
+}
+
+.gamebites-tooltip-source a:hover {
+  color: #ffffff;
+}
+
+/* Animations */
+@keyframes gamebites-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge wrapper - positioned next to price row */
+.gamebites-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Hide badge when closed */
+.gamebites-badge.hidden {
+  display: none;
+}
+
+/* Branding - small and subtle */
+.gamebites-branding {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+  font-size: 8px;
+  color: rgba(103, 193, 245, 0.35);
+  font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.gamebites-branding-icon {
+  width: 10px;
+  height: 10px;
+  opacity: 0.4;
+}
+
+.gamebites-tooltip-source.gamebites-branding-only {
+  justify-content: flex-end;
+}
