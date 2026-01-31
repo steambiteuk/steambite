@@ -16,7 +16,7 @@ A Chrome extension that compares Steam game prices with real-world products. Eve
 ## Installation 🚀
 
 ### From Chrome Web Store
-*Coming soon...*
+https://chromewebstore.google.com/detail/fcmjljommpgbodanhfieelofpgeejhkg?utm_source=item-share-cb
 
 ### Manual Installation (Developer Mode)
 1. Download or clone this repository
@@ -129,3 +129,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Made with ❤️ by the SteamBite Team
+
