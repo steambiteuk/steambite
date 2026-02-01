@@ -7,16 +7,18 @@ A Chrome extension that compares Steam game prices with real-world products. Eve
 ## Features ✨
 
 - **Price Comparison**: Converts game prices to everyday products like Big Macs, Lattes, Croissants, and more
+- **Custom Value**: Define your own comparison item with custom icon, name, price, and currency
 - **Multi-Currency Support**: Works with USD, EUR, TRY, GBP, JPY, CAD, AUD, BRL, PLN, and CNY
 - **Real-time Exchange Rates**: Uses Frankfurter API for accurate currency conversion
 - **Global Products**: Choose from products across different countries (US, UK, TR, JP, DE, FR, BR, AU, CA, CN, PL)
-- **I'm Feeling Lucky**: Discover random Steam games with one click
+- **I'm Feeling Lucky**: Discover random comparison products with one click
+- **Modern Steam-like UI**: Beautiful dark theme with smooth animations and toggle switches
 - **Minimal & Clean UI**: Designed to blend seamlessly with Steam's interface
 
 ## Installation 🚀
 
 ### From Chrome Web Store
-https://chromewebstore.google.com/detail/fcmjljommpgbodanhfieelofpgeejhkg?utm_source=item-share-cb
+*Coming soon...*
 
 ### Manual Installation (Developer Mode)
 1. Download or clone this repository
@@ -34,6 +36,19 @@ https://chromewebstore.google.com/detail/fcmjljommpgbodanhfieelofpgeejhkg?utm_so
    - Select your preferred currency
    - Choose a comparison product
    - Toggle badge visibility
+
+### Custom Value Mode 🎨
+
+Want to compare prices with your own custom item? 
+
+1. Open the extension popup
+2. Toggle **"Custom Value"** switch ON
+3. Enter your custom item details:
+   - **Icon**: Use any emoji (e.g., 🍕, 🎵, 🚗)
+   - **Item Name**: Give it a name (e.g., "My Coffee")
+   - **Price**: Enter the price value
+   - **Currency**: Select the currency
+4. Visit any Steam game page - your custom item will be used for comparison!
 
 ## Supported Products 🍔☕
 
@@ -129,4 +144,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Made with ❤️ by the SteamBite Team
-

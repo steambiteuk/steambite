@@ -5,88 +5,172 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SteamBite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
   <div class="popup-container">
+    <!-- Background Ambience -->
+    <div class="background-gradient"></div>
+
     <!-- Header -->
     <header class="popup-header">
-      <div class="logo">
-        <img src="icons/icon128.png" alt="GameBites" class="logo-icon">
-        <span class="logo-text">SteamBite</span>
+      <div class="header-left">
+        <div class="logo-icon-wrapper">
+          <img src="icons/icon48.png" alt="SteamBite" class="logo-icon">
+        </div>
+        <div class="logo-text-wrapper">
+          <h1 class="logo-text">SteamBite</h1>
+          <p class="logo-subtitle">PRICE COMPARATOR</p>
+        </div>
       </div>
+      <button class="settings-btn" id="settings-btn" title="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
     </header>
 
-    <!-- Settings Section -->
-    <section class="settings-section">
-      <h2 class="section-title">
-        <span>⚙️</span>
-        <span>Settings</span>
-      </h2>
-
-      <!-- Currency Selection -->
-      <div class="form-group">
-        <label for="currency-select">Currency</label>
-        <select id="currency-select">
-          <option value="USD">🇺🇸 USD - US Dollar</option>
-          <option value="EUR">🇪🇺 EUR - Euro</option>
-          <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
-          <option value="GBP">🇬🇧 GBP - British Pound</option>
-          <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
-          <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
-          <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
-          <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
-          <option value="PLN">🇵🇱 PLN - Polish Zloty</option>
-          <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
-        </select>
-      </div>
-
-      <!-- Product Selection -->
-      <div class="form-group">
-        <label for="product-select">Comparison Product</label>
-        <select id="product-select">
-          <!-- Dynamically populated -->
-        </select>
-      </div>
-
-      <!-- Product Preview -->
-      <div id="product-preview" class="product-preview" style="display: none;">
-        <img id="preview-icon" src="" alt="" class="product-preview-icon">
-        <div class="product-preview-info">
-          <div id="preview-name" class="product-preview-name"></div>
-          <div id="preview-price" class="product-preview-price"></div>
+    <!-- Main Content -->
+    <main class="popup-main">
+      <!-- Store Currency -->
+      <div class="form-group" id="currency-group">
+        <label class="form-label">STORE CURRENCY</label>
+        <div class="select-wrapper">
+          <select id="currency-select">
+            <option value="TRY">TRY - Turkish Lira</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="CAD">CAD - Canadian Dollar</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="BRL">BRL - Brazilian Real</option>
+            <option value="PLN">PLN - Polish Zloty</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+          </select>
+          <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
       </div>
 
-      <!-- Badge Visibility -->
-      <div class="form-group checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="badge-visible" checked>
-          Show Badges on Steam
-        </label>
+      <!-- Comparison Item -->
+      <div class="form-group" id="product-group">
+        <label class="form-label">COMPARISON ITEM</label>
+        <div class="select-wrapper product-select-wrapper">
+          <div class="product-preview-inline" id="product-preview-inline">
+            <img id="inline-preview-icon" src="" alt="" class="inline-preview-icon">
+            <div class="inline-preview-info">
+              <span id="inline-preview-name" class="inline-preview-name"></span>
+              <span id="inline-preview-price" class="inline-preview-price"></span>
+            </div>
+          </div>
+          <select id="product-select">
+            <!-- Dynamically populated -->
+          </select>
+          <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
       </div>
-    </section>
 
-    <!-- Lucky Button -->
-    <section class="lucky-section">
-      <button id="lucky-btn" class="lucky-button">
-        <span class="lucky-icon">🎲</span>
-        <span class="lucky-text">I'm Feeling Lucky!</span>
-      </button>
-      <p class="lucky-hint">Discover a random Steam game</p>
-    </section>
+      <!-- Custom Value Section -->
+      <div class="custom-value-section" id="custom-value-section">
+        <div class="custom-value-header" id="custom-value-toggle">
+          <div class="custom-value-header-left">
+            <div class="custom-value-icon-wrapper" id="custom-icon-wrapper">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+            </div>
+            <span class="custom-value-label" id="custom-value-label">CUSTOM VALUE</span>
+          </div>
+          <div class="toggle-switch" id="custom-toggle">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+
+        <!-- Custom Value Inputs (Hidden by default) -->
+        <div class="custom-value-body" id="custom-value-body" style="display: none;">
+          <div class="custom-input-row">
+            <div class="custom-input-group icon-group">
+              <label class="custom-input-label">ICON</label>
+              <input type="text" id="custom-icon" class="custom-input icon-input" placeholder="🍕" maxlength="4">
+            </div>
+            <div class="custom-input-group name-group">
+              <label class="custom-input-label">ITEM NAME</label>
+              <input type="text" id="custom-name" class="custom-input" placeholder="e.g. My Coffee">
+            </div>
+          </div>
+          <div class="custom-input-row">
+            <div class="custom-input-group price-group">
+              <label class="custom-input-label">PRICE</label>
+              <input type="number" id="custom-price" class="custom-input" placeholder="0.00" step="0.01" min="0">
+            </div>
+            <div class="custom-input-group currency-group">
+              <label class="custom-input-label">CURRENCY</label>
+              <select id="custom-currency" class="custom-input custom-select">
+                <option value="TRY">TRY</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+                <option value="BRL">BRL</option>
+                <option value="PLN">PLN</option>
+                <option value="CNY">CNY</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge Toggle -->
+      <div class="toggle-group" id="badge-toggle-group">
+        <span class="toggle-label">Show Badges on Steam</span>
+        <div class="toggle-switch active" id="badge-toggle">
+          <div class="toggle-slider"></div>
+        </div>
+      </div>
+
+      <!-- Lucky Button -->
+      <div class="lucky-section">
+        <button id="lucky-btn" class="lucky-button">
+          <svg class="lucky-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+            <circle cx="8" cy="8" r="1.5" fill="currentColor"></circle>
+            <circle cx="16" cy="8" r="1.5" fill="currentColor"></circle>
+            <circle cx="8" cy="16" r="1.5" fill="currentColor"></circle>
+            <circle cx="16" cy="16" r="1.5" fill="currentColor"></circle>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+          </svg>
+          <span class="lucky-text">I'm Feeling Lucky!</span>
+        </button>
+        <p class="lucky-hint">Discover a random comparison product</p>
+      </div>
+    </main>
 
     <!-- Footer -->
     <footer class="popup-footer">
-      <a href="https://SteamBite.uk/privacy_policy.html" target="_blank" class="footer-link">Privacy Policy</a>
-      <span class="separator">•</span>
-      <a href="https://github.com/steambiteuk/steambite" target="_blank" class="footer-link">GitHub</a>
+      <div class="footer-left">
+        <a href="https://SteamBite.uk/privacy_policy.html" target="_blank" class="footer-link">Privacy</a>
+        <a href="https://github.com/steambiteuk/steambite/issues" target="_blank" class="footer-link">Support</a>
+      </div>
+      <a href="https://github.com/steambiteuk/steambite" target="_blank" class="footer-link github-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        <span>GitHub</span>
+      </a>
     </footer>
   </div>
 
   <script src="popup.js"></script>
 </body>
-
 
 </html>

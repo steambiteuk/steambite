@@ -10,7 +10,12 @@
   const DEFAULT_SETTINGS = {
     selectedProduct: 'bigmac_us',
     selectedCurrency: 'USD',
-    badgeVisible: true
+    badgeVisible: true,
+    isCustomMode: false,
+    customIcon: '🍕',
+    customName: 'My Item',
+    customPrice: '100',
+    customCurrencyCode: 'TRY'
   };
 
   // Global state
@@ -130,9 +135,30 @@
 
   /**
    * Find the selected product from settings
+   * Returns custom product if custom mode is enabled
    * @returns {Object|null} Selected product with country info
    */
   function getSelectedProduct() {
+    // Check if custom mode is enabled
+    if (settings.isCustomMode) {
+      const customPrice = parseFloat(settings.customPrice);
+      if (isNaN(customPrice) || customPrice <= 0) {
+        console.warn('[GameBites] Invalid custom price, falling back to default');
+      } else {
+        return {
+          id: 'custom',
+          label: settings.customName || 'Custom Item',
+          price: customPrice,
+          currency: settings.customCurrencyCode || 'TRY',
+          icon: settings.customIcon || '🍕',
+          type: 'custom',
+          countryCode: 'CUSTOM',
+          countryName: 'Custom',
+          flag: settings.customIcon || '🍕'
+        };
+      }
+    }
+
     if (!productsData) return null;
 
     for (const countryCode of Object.keys(productsData.countries)) {
@@ -277,6 +303,9 @@
     if (svgFile) {
       const iconUrl = chrome.runtime.getURL(`icons/${svgFile}`);
       iconHTML = `<img src="${iconUrl}" alt="${product.label}" class="gamebites-badge-icon-img">`;
+    } else if (product.icon) {
+      // Use product's own icon (for custom products)
+      iconHTML = `<span class="gamebites-badge-icon">${product.icon}</span>`;
     } else {
       const emoji = PRODUCT_ICONS[product.type] || PRODUCT_ICONS.default;
       iconHTML = `<span class="gamebites-badge-icon">${emoji}</span>`;
