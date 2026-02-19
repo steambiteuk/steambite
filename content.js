@@ -198,7 +198,21 @@
     if (priceText.includes('€')) currency = 'EUR';
     else if (priceText.includes('₺') || priceText.includes('TL') || priceText.includes('TRY')) currency = 'TRY';
     else if (priceText.includes('£')) currency = 'GBP';
-    else if (priceText.includes('¥')) currency = 'JPY';
+    else if (priceText.includes('¥')) {
+      // Improve CNY vs JPY detection
+      const isChinese = document.documentElement.lang.includes('zh') || 
+                       priceText.includes('元') || 
+                       (typeof SteamVars !== 'undefined' && SteamVars.Language === 'schinese');
+      
+      // CNY often uses decimals (e.g., ¥79.20), JPY is integer only
+      const hasDecimals = priceText.includes('.') || priceText.includes(',');
+      
+      if (isChinese || hasDecimals) {
+        currency = 'CNY';
+      } else {
+        currency = 'JPY';
+      }
+    }
     else if (priceText.includes('R$')) currency = 'BRL';
     else if (priceText.includes('A$') || priceText.includes('AU$')) currency = 'AUD';
     else if (priceText.includes('C$') || priceText.includes('CA$')) currency = 'CAD';
